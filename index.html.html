@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayaish Khan — WordPress Developer & Technical SEO Expert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0d0d0d;
+  --ink-2:#3a3a3a;
+  --ink-3:#7a7a7a;
+  --ink-4:#b0b0b0;
+  --bg:#fafaf8;
+  --bg-2:#f2f1ed;
+  --bg-3:#e9e7e0;
+  --white:#ffffff;
+  --accent:#2563eb;
+  --accent-light:#eff6ff;
+  --accent-dark:#1d4ed8;
+  --green:#16a34a;
+  --green-light:#f0fdf4;
+  --wp:#21759b;
+  --border:rgba(13,13,13,0.1);
+  --border-strong:rgba(13,13,13,0.2);
+  --shadow-sm:0 1px 8px rgba(0,0,0,0.06);
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+  --r:10px;
+  --r-lg:16px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;overflow-x:hidden;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg-2);}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:2px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-mark{width:34px;height:34px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--white);letter-spacing:-0.02em;}
+.nav-logo-name{font-size:14px;font-weight:600;color:var(--ink);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ink-3);text-decoration:none;letter-spacing:0.01em;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-hire{background:var(--accent)!important;color:#fff!important;padding:7px 18px!important;border-radius:100px!important;font-size:13px!important;font-weight:500!important;transition:background .2s!important;}
+.nav-hire:hover{background:var(--accent-dark)!important;}
+.nav-avail{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--green);}
+.nav-avail::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ── LAYOUT ── */
+.container{max-width:1140px;margin:0 auto;padding:0 5%;}
+
+/* ── HERO ── */
+.hero{padding:120px 5% 80px;background:var(--bg);}
+.hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:5px 14px;border-radius:100px;margin-bottom:24px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:20px;}
+.hero h1 span{font-style:italic;color:var(--accent);}
+.hero-bio{font-size:1rem;color:var(--ink-2);max-width:52ch;line-height:1.75;margin-bottom:32px;}
+.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:40px;}
+.btn-primary{background:var(--ink);color:var(--white);padding:12px 28px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px);}
+.btn-secondary{border:1.5px solid var(--border-strong);color:var(--ink);padding:11px 24px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:500;transition:border-color .2s,background .2s;}
+.btn-secondary:hover{border-color:var(--ink);background:var(--bg-2);}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-3);}
+.meta-icon{font-size:14px;}
+
+/* HERO CARD */
+.hero-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--shadow);}
+.hc-avatar{width:70px;height:70px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:16px;}
+.hc-name{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.hc-role{font-size:12px;color:var(--ink-3);margin-bottom:16px;}
+.hc-divider{border:none;border-top:1px solid var(--border);margin:16px 0;}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center;}
+.hc-stat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--ink);}
+.hc-stat-label{font-size:10px;color:var(--ink-4);letter-spacing:0.06em;text-transform:uppercase;margin-top:1px;}
+.hc-skills{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;}
+.hc-skill{font-size:11px;font-weight:500;padding:4px 10px;border-radius:100px;background:var(--bg-2);color:var(--ink-2);}
+.hc-contact{margin-top:16px;display:flex;flex-direction:column;gap:6px;}
+.hc-clink{font-size:12px;color:var(--ink-3);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.hc-clink:hover{color:var(--accent);}
+
+/* ── SECTION SHARED ── */
+section{padding:80px 5%;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:14px;}
+.section-sub{font-size:15px;color:var(--ink-3);max-width:55ch;line-height:1.7;margin-bottom:48px;}
+
+/* ── CLIENTS STRIP ── */
+.clients{background:var(--bg-2);padding:32px 5%;}
+.clients-inner{max-width:1140px;margin:0 auto;}
+.clients-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);text-align:center;margin-bottom:20px;}
+.clients-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;}
+.client-pill{font-size:12px;font-weight:600;padding:7px 18px;border-radius:100px;border:1px solid var(--border);color:var(--ink-3);background:var(--white);letter-spacing:0.01em;}
+
+/* ── SERVICES ── */
+.services{background:var(--white);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.srv-card{border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;background:var(--bg);transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden;}
+.srv-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:var(--border-strong);}
+.srv-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;}
+.srv-card h3{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.srv-card p{font-size:13px;color:var(--ink-3);line-height:1.65;}
+.srv-num{position:absolute;top:20px;right:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-4);}
+
+/* ── WORK ── */
+.work{background:var(--bg-2);}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.proj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.proj-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;}
+.proj-thumb-text{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.7);z-index:1;}
+.proj-type-badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:rgba(0,0,0,0.35);color:#fff;padding:3px 10px;border-radius:100px;z-index:2;}
+.proj-body{padding:20px;}
+.proj-body h3{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.proj-body p{font-size:13px;color:var(--ink-3);line-height:1.6;margin-bottom:12px;}
+.proj-url{font-size:12px;color:var(--accent);text-decoration:none;font-family:'JetBrains Mono',monospace;display:inline-flex;align-items:center;gap:4px;}
+.proj-url:hover{text-decoration:underline;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.tag{font-size:10px;font-weight:600;padding:3px 9px;border-radius:100px;border:1px solid var(--border);color:var(--ink-3);}
+
+/* ── SKILLS ── */
+.skills{background:var(--ink);}
+.skills .section-label{color:#60a5fa;}
+.skills .section-title{color:var(--white);}
+.skills .section-sub{color:rgba(255,255,255,0.5);}
+.skills-categories{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.skill-cat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-lg);padding:24px;}
+.skill-cat-title{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.skill-list li{font-size:13px;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px;}
+.skill-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:#60a5fa;flex-shrink:0;}
+
+/* ── EXPERIENCE ── */
+.experience{background:var(--white);}
+.exp-timeline{display:flex;flex-direction:column;gap:0;}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--border);}
+.exp-item:last-child{border-bottom:none;}
+.exp-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-4);padding-top:4px;}
+.exp-current{display:inline-block;background:var(--green-light);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:6px;letter-spacing:0.06em;text-transform:uppercase;}
+.exp-content h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.exp-company{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:12px;}
+.exp-desc{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:12px;}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.exp-list li{font-size:13px;color:var(--ink-3);padding-left:16px;position:relative;}
+.exp-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:11px;top:2px;}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--bg-2);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;}
+.testi-stars{color:#f59e0b;font-size:13px;margin-bottom:12px;letter-spacing:2px;}
+.testi-text{font-size:13px;color:var(--ink-2);line-height:1.75;font-style:italic;margin-bottom:16px;}
+.testi-author{display:flex;align-items:center;gap:10px;}
+.testi-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;}
+.testi-name{font-size:13px;font-weight:600;color:var(--ink);}
+.testi-role{font-size:11px;color:var(--ink-4);}
+
+/* ── CTA ── */
+.cta{background:var(--accent);padding:80px 5%;text-align:center;}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;margin-bottom:12px;}
+.cta p{color:rgba(255,255,255,0.75);font-size:16px;margin-bottom:32px;}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--accent);padding:12px 28px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:600;transition:transform .15s;}
+.btn-white:hover{transform:translateY(-2px);}
+.btn-white-outline{border:2px solid rgba(255,255,255,0.5);color:#fff;padding:11px 24px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:500;transition:border-color .2s;}
+.btn-white-outline:hover{border-color:#fff;}
+.cta-contact-details{margin-top:32px;display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
+.cta-detail{font-size:13px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:7px;}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-inner{max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:#fff;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.hero-inner>*{animation:fadeUp .6s ease both;}
+.hero-inner>*:nth-child(1){animation-delay:.05s;}
+.hero-inner>*:nth-child(2){animation-delay:.2s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;}
+  .hero-card{max-width:420px;}
+  .services-grid,.work-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+  .skills-categories{grid-template-columns:1fr 1fr;}
+  .exp-item{grid-template-columns:1fr;gap:4px;}
+  .exp-date{padding-top:0;}
+}
+@media(max-width:620px){
+  nav .nav-links{display:none;}
+  .services-grid,.work-grid,.testi-grid,.skills-categories{grid-template-columns:1fr;}
+  section{padding:56px 5%;}
+  footer .footer-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">AK</div>
+      <span class="nav-logo-name">Ayaish Khan</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><span class="nav-avail">Available</span></li>
+      <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">🌍 Karachi, Pakistan · Open to Remote</div>
+      <h1>WordPress Developer<br>& <span>Technical SEO</span><br>Expert</h1>
+      <p class="hero-bio">7+ years building fast, secure, and conversion-driven WordPress websites for e-commerce, SaaS, and agency clients worldwide. From custom themes to headless architectures — I deliver sites that rank and perform.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Work with me</a>
+        <a href="mailto:ayaishkhan70@gmail.com" class="btn-secondary">ayaishkhan70@gmail.com</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item"><span class="meta-icon">📍</span> Garden East, Karachi</div>
+        <div class="meta-item"><span class="meta-icon">💼</span> Currently at Stratigia</div>
+        <div class="meta-item"><span class="meta-icon">📞</span> +92 315 123 3895</div>
+        <div class="meta-item"><span class="meta-icon">🔗</span> <a href="https://linkedin.com/in/ayaish-khan" style="color:var(--accent);text-decoration:none;">LinkedIn</a></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hc-avatar">AK</div>
+      <div class="hc-name">Ayaish Khan</div>
+      <div class="hc-role">Senior WordPress Developer & Technical SEO Executive</div>
+      <hr class="hc-divider">
+      <div class="hc-stats">
+        <div><div class="hc-stat-num">7+</div><div class="hc-stat-label">Years Exp.</div></div>
+        <div><div class="hc-stat-num">16+</div><div class="hc-stat-label">Live Sites</div></div>
+        <div><div class="hc-stat-num">4</div><div class="hc-stat-label">Companies</div></div>
+      </div>
+      <hr class="hc-divider">
+      <div class="hc-skills">
+        <span class="hc-skill">WordPress</span>
+        <span class="hc-skill">WooCommerce</span>
+        <span class="hc-skill">Technical SEO</span>
+        <span class="hc-skill">Shopify</span>
+        <span class="hc-skill">PHP</span>
+        <span class="hc-skill">Elementor</span>
+        <span class="hc-skill">ACF</span>
+        <span class="hc-skill">Page Speed</span>
+      </div>
+      <hr class="hc-divider">
+      <div class="hc-contact">
+        <a class="hc-clink" href="mailto:ayaishkhan70@gmail.com">✉ ayaishkhan70@gmail.com</a>
+        <a class="hc-clink" href="https://linkedin.com/in/ayaish-khan">🔗 linkedin.com/in/ayaish-khan</a>
+        <a class="hc-clink" href="tel:+923151233895">📞 +92 315 123 3895</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLIENTS STRIP ══ -->
+<div class="clients">
+  <div class="clients-inner">
+    <div class="clients-label">Companies & clients I've worked with</div>
+    <div class="clients-logos">
+      <span class="client-pill">Stratigia</span>
+      <span class="client-pill">Sash Digital</span>
+      <span class="client-pill">Ozbix Dev House</span>
+      <span class="client-pill">Fatex Textiles</span>
+      <span class="client-pill">Cartiful</span>
+      <span class="client-pill">Vencru</span>
+      <span class="client-pill">EcomCircles</span>
+      <span class="client-pill">DealsExpress</span>
+      <span class="client-pill">PMH Scribe</span>
+      <span class="client-pill">ShareArchiver</span>
+      <span class="client-pill">Rumi Fragrance</span>
+      <span class="client-pill">Ralph Skin</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">What I do</div>
+    <div class="section-title">End-to-end WordPress expertise</div>
+    <div class="section-sub">From pixel-perfect custom themes to technical SEO audits — I cover the full WordPress stack so you don't have to juggle multiple freelancers.</div>
+    <div class="services-grid">
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#eff6ff;">🎨</div>
+        <div class="srv-num">01</div>
+        <h3>Custom WordPress Development</h3>
+        <p>Bespoke theme & plugin development built to your exact requirements. Clean PHP, semantic HTML, and performance-first architecture.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#f0fdf4;">🛒</div>
+        <div class="srv-num">02</div>
+        <h3>WooCommerce & E-Commerce</h3>
+        <p>Full WooCommerce store setup, product optimization, payment gateway integration, and CRO improvements for higher conversions.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#fefce8;">🔍</div>
+        <div class="srv-num">03</div>
+        <h3>Technical SEO</h3>
+        <p>Site audits, crawlability fixes, schema markup, Core Web Vitals optimization, and architecture improvements to boost Google rankings.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#fdf4ff;">⚡</div>
+        <div class="srv-num">04</div>
+        <h3>Speed & Performance</h3>
+        <p>Turn sluggish sites into lightning-fast experiences. Caching strategy, image optimization, lazy loading, and server-level tuning.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#fff7ed;">🛡️</div>
+        <div class="srv-num">05</div>
+        <h3>Security & Maintenance</h3>
+        <p>Malware removal, hardening, plugin updates, automated backups, and monthly maintenance retainers to keep your site safe and running.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon" style="background:#f0fdfa;">🚚</div>
+        <div class="srv-num">06</div>
+        <h3>Website Migration</h3>
+        <p>Seamless WordPress migrations — host-to-host, platform-to-WordPress, or Shopify-to-WooCommerce — with zero downtime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WORK / PORTFOLIO ══ -->
+<section class="work" id="work">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Sites I've built & optimized</div>
+    <div class="section-sub">Real live websites across e-commerce, SaaS, services, and more — each one built for speed, SEO, and results.</div>
+    <div class="work-grid">
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);">
+          <span class="proj-type-badge">SEO Agency</span>
+          <span class="proj-thumb-text">Stratigia</span>
+        </div>
+        <div class="proj-body">
+          <h3>Stratigia.com</h3>
+          <p>B2B SaaS SEO & marketing agency. WordPress site with custom design, optimized architecture, and advanced technical SEO implementation.</p>
+          <a href="https://stratigia.com" class="proj-url" target="_blank">↗ stratigia.com</a>
+          <div class="proj-tags"><span class="tag">WordPress</span><span class="tag">Technical SEO</span><span class="tag">Page Speed</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#064e3b 0%,#065f46 100%);">
+          <span class="proj-type-badge">E-commerce SaaS</span>
+          <span class="proj-thumb-text">EcomCircles</span>
+        </div>
+        <div class="proj-body">
+          <h3>EcomCircles.com</h3>
+          <p>E-commerce education & tooling platform. WordPress-powered with course-style content architecture and conversion-focused landing pages.</p>
+          <a href="https://ecomcircles.com" class="proj-url" target="_blank">↗ ecomcircles.com</a>
+          <div class="proj-tags"><span class="tag">WordPress</span><span class="tag">LMS</span><span class="tag">On-Page SEO</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#7c2d12 0%,#b45309 100%);">
+          <span class="proj-type-badge">Fragrance Brand</span>
+          <span class="proj-thumb-text">Rumi</span>
+        </div>
+        <div class="proj-body">
+          <h3>RumiFragrance.com</h3>
+          <p>Luxury fragrance WooCommerce store. Custom product pages, wishlist, gift-card integration, and performance-optimized checkout.</p>
+          <a href="https://rumifragrance.com" class="proj-url" target="_blank">↗ rumifragrance.com</a>
+          <div class="proj-tags"><span class="tag">WooCommerce</span><span class="tag">Custom Theme</span><span class="tag">CRO</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#1e1b4b 0%,#3730a3 100%);">
+          <span class="proj-type-badge">SaaS Product</span>
+          <span class="proj-thumb-text">Vencru</span>
+        </div>
+        <div class="proj-body">
+          <h3>Vencru.com</h3>
+          <p>Invoicing & inventory SaaS platform. WordPress marketing site with structured data, technical SEO, and lightning-fast page loads.</p>
+          <a href="https://vencru.com" class="proj-url" target="_blank">↗ vencru.com</a>
+          <div class="proj-tags"><span class="tag">WordPress</span><span class="tag">Schema</span><span class="tag">Technical SEO</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#1a1a1a 0%,#3d3d3d 100%);">
+          <span class="proj-type-badge">Leather Goods</span>
+          <span class="proj-thumb-text">Genuine</span>
+        </div>
+        <div class="proj-body">
+          <h3>TheGenuineLeather.com</h3>
+          <p>Premium leather goods WooCommerce store. Conversion-optimized product pages, fast image delivery, and SEO product schema.</p>
+          <a href="https://thegenuineleather.com" class="proj-url" target="_blank">↗ thegenuineleather.com</a>
+          <div class="proj-tags"><span class="tag">WooCommerce</span><span class="tag">Elementor</span><span class="tag">Performance</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#0c4a6e 0%,#0284c7 100%);">
+          <span class="proj-type-badge">Healthcare SaaS</span>
+          <span class="proj-thumb-text">PMH</span>
+        </div>
+        <div class="proj-body">
+          <h3>PMHScribe.com</h3>
+          <p>Healthcare documentation SaaS platform. WordPress marketing site with technical SEO, structured content, and mobile-first design.</p>
+          <a href="https://pmhscribe.com" class="proj-url" target="_blank">↗ pmhscribe.com</a>
+          <div class="proj-tags"><span class="tag">WordPress</span><span class="tag">SEO</span><span class="tag">SaaS</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#14532d 0%,#15803d 100%);">
+          <span class="proj-type-badge">Deals Platform</span>
+          <span class="proj-thumb-text">Deals</span>
+        </div>
+        <div class="proj-body">
+          <h3>DealsExpress.pk</h3>
+          <p>Pakistan's deals aggregator. WooCommerce-based marketplace with product import automation, fast filters, and local payment integration.</p>
+          <a href="https://dealsexpress.pk" class="proj-url" target="_blank">↗ dealsexpress.pk</a>
+          <div class="proj-tags"><span class="tag">WooCommerce</span><span class="tag">Marketplace</span><span class="tag">Local SEO</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#831843 0%,#be185d 100%);">
+          <span class="proj-type-badge">Beauty Brand</span>
+          <span class="proj-thumb-text">Ralph</span>
+        </div>
+        <div class="proj-body">
+          <h3>RalphSkin.com</h3>
+          <p>Skincare brand WooCommerce store. Custom product bundling, subscription feature, and ingredient-based filtering system.</p>
+          <a href="https://ralphskin.com" class="proj-url" target="_blank">↗ ralphskin.com</a>
+          <div class="proj-tags"><span class="tag">WooCommerce</span><span class="tag">Subscriptions</span><span class="tag">CRO</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#292524 0%,#57534e 100%);">
+          <span class="proj-type-badge">Footwear</span>
+          <span class="proj-thumb-text">Jutay</span>
+        </div>
+        <div class="proj-body">
+          <h3>Jutay.co</h3>
+          <p>Traditional Pakistani footwear online store. WooCommerce with size variations, custom product pages, and regional SEO targeting.</p>
+          <a href="https://jutay.co" class="proj-url" target="_blank">↗ jutay.co</a>
+          <div class="proj-tags"><span class="tag">WooCommerce</span><span class="tag">Theme Dev</span><span class="tag">Local SEO</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <div class="section-title">Full-stack WordPress skill set</div>
+    <div class="section-sub">Every tool I use professionally — no fluff, no buzzwords.</div>
+    <div class="skills-categories">
+      <div class="skill-cat">
+        <div class="skill-cat-title">⚙ Web Development</div>
+        <ul class="skill-list">
+          <li>WordPress Theme & Plugin Dev</li>
+          <li>WooCommerce Development</li>
+          <li>Custom WordPress Builds</li>
+          <li>Elementor & WPBakery</li>
+          <li>HTML5, CSS3, Bootstrap</li>
+          <li>Basic PHP & MySQL</li>
+          <li>cPanel & Hosting Mgmt</li>
+          <li>Website Migration & Backup</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">🔍 SEO & Marketing</div>
+        <ul class="skill-list">
+          <li>Technical SEO Audits</li>
+          <li>On-Page & Off-Page SEO</li>
+          <li>Keyword Research</li>
+          <li>Google Search Console</li>
+          <li>Google Analytics</li>
+          <li>Schema & Structured Data</li>
+          <li>Link Building</li>
+          <li>Local SEO</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">🛒 E-Commerce</div>
+        <ul class="skill-list">
+          <li>WooCommerce Store Mgmt</li>
+          <li>Shopify Store Setup</li>
+          <li>Payment Gateway Integration</li>
+          <li>Product Optimization</li>
+          <li>Inventory Management</li>
+          <li>Conversion Rate Opt. (CRO)</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">🛠 Tools & Soft Skills</div>
+        <ul class="skill-list">
+          <li>Figma (Basic)</li>
+          <li>Adobe Photoshop (Basic)</li>
+          <li>Canva</li>
+          <li>Project Management</li>
+          <li>Team Leadership</li>
+          <li>Client Communication</li>
+          <li>English & Urdu</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-label">Work History</div>
+    <div class="section-title">Where I've worked</div>
+    <div class="section-sub">A track record built across agencies, product companies, and client services over 7+ years.</div>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Mar 2023 – Present</div>
+          <div class="exp-current">Current Role</div>
+        </div>
+        <div class="exp-content">
+          <h3>Senior WordPress Developer / Technical SEO Executive</h3>
+          <div class="exp-company">Stratigia · Pakistan (Remote)</div>
+          <ul class="exp-list">
+            <li>Develop and manage WordPress websites for a portfolio of B2B SaaS and agency clients.</li>
+            <li>Handle full technical SEO stack to improve Google search rankings and organic traffic.</li>
+            <li>Improve website speed, Core Web Vitals, and overall performance metrics.</li>
+            <li>Manage security hardening, automated backups, and site monitoring.</li>
+            <li>Collaborate with marketing teams to implement growth-driven SEO strategies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Feb 2023 – Oct 2025</div>
+        </div>
+        <div class="exp-content">
+          <h3>WordPress Developer / Technical SEO Expert</h3>
+          <div class="exp-company">Sash Digital · Pakistan (Part-time Remote)</div>
+          <ul class="exp-list">
+            <li>Audited websites and fixed technical SEO issues to improve crawlability and indexation.</li>
+            <li>Built and customized WordPress sites with plugin integration and theme development.</li>
+            <li>Improved page speed, mobile responsiveness, and overall user experience.</li>
+            <li>Monitored performance using analytics tools and implemented data-driven fixes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">~1 Year</div>
+        </div>
+        <div class="exp-content">
+          <h3>Web Developer</h3>
+          <div class="exp-company">Fatex Textiles · Pakistan</div>
+          <ul class="exp-list">
+            <li>Developed and maintained the company's web presence.</li>
+            <li>Supported the marketing team with regular website updates and campaigns.</li>
+            <li>Managed hosting, domains, DNS, and website security.</li>
+            <li>Ensured brand consistency across all digital platforms.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Jan 2022 – Jul 2022</div>
+        </div>
+        <div class="exp-content">
+          <h3>WordPress / Shopify Developer</h3>
+          <div class="exp-company">Ozbix Development House</div>
+          <ul class="exp-list">
+            <li>Built and customized WordPress and Shopify websites for various clients.</li>
+            <li>Managed online stores, product listings, and inventory updates.</li>
+            <li>Integrated payment gateways and third-party plugins.</li>
+            <li>Performed regular website updates and maintenance tasks.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-label">Social Proof</div>
+    <div class="section-title">What clients say</div>
+    <div class="section-sub">Feedback from the people I've worked with directly.</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Ayaish turned around our slow, poorly-structured WordPress site into something we're actually proud of. Page speed went from a 40 to 91 on Google PageSpeed. Incredible attention to detail."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#eff6ff;color:#1d4ed8;">SM</div>
+          <div>
+            <div class="testi-name">Sarah M.</div>
+            <div class="testi-role">E-commerce Client</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We needed technical SEO on our SaaS site. Ayaish audited everything, fixed crawl issues we didn't even know existed, and our organic traffic improved within 8 weeks. Highly recommend."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#f0fdf4;color:#15803d;">AR</div>
+          <div>
+            <div class="testi-name">Ahmed R.</div>
+            <div class="testi-role">SaaS Founder</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Reliable, communicates clearly, and delivers exactly what's promised. Our WooCommerce store has been running without a single issue since Ayaish took it over. A true professional."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#fefce8;color:#b45309;">FK</div>
+          <div>
+            <div class="testi-name">Fatima K.</div>
+            <div class="testi-role">Store Owner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA / CONTACT ══ -->
+<section class="cta" id="contact">
+  <h2>Let's build something great</h2>
+  <p>Available for freelance projects, full-time roles, and long-term retainers. Response within 24 hours.</p>
+  <div class="cta-actions">
+    <a href="mailto:ayaishkhan70@gmail.com" class="btn-white">Send me an email</a>
+    <a href="https://linkedin.com/in/ayaish-khan" class="btn-white-outline" target="_blank">Connect on LinkedIn</a>
+  </div>
+  <div class="cta-contact-details">
+    <span class="cta-detail">✉ ayaishkhan70@gmail.com</span>
+    <span class="cta-detail">📞 +92 315 123 3895</span>
+    <span class="cta-detail">📍 Karachi, Pakistan</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Ayaish Khan</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="https://linkedin.com/in/ayaish-khan" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2026 Ayaish Khan · WordPress Developer & SEO Expert</div>
+  </div>
+</footer>
+
+</body>
+</html>
